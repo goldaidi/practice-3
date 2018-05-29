@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animate practice</title>
+	<!-- mobile -->
+	<meta name="description" content="網站描述...">
+
+	<!-- mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- IE相容 -->
+	<meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+	<!-- normalize -->
+	<link rel="stylesheet" href="normalize.css">
+
+	<!-- bootstrap4 CDN -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+    <style>
+    	html, body {
+            font-family:微軟正黑體, 標楷體, 微軟雅黑, Arial, Arial Black, Verdana, Georgia, Times New Roman, Trebuchet MS; 
+            font-size: 18px;
+            box-sizing: border-box;
+            width: 100vw;
+		    height: 100vh;
+		  	display: flex;
+		  	justify-content: center;
+		  	align-items: center;
+		  	background-color: #ccc;
+			background: url(131.jpg) no-repeat center center;
+			position: relative;   
+            background-size: cover;
+            padding:30vh 0;
+            opacity: 0.9;
+        }
+        ::selection {
+		    background: #FE57A1; color: white;
+		}
+
+		#contain{
+			background: linear-gradient(rgba(252, 134, 134, 0.3),rgba(247, 247, 62, 0.2));
+			width:100vw;
+			height:100vh;
+			display: flex;
+		  	justify-content: center;
+		  	align-items: center;
+		}
+
+		#wrap {
+			width:60vw;
+			padding:0 3rem;
+			color:#fff;
+		}
+		.box p {
+			font-size: 30px;
+			font-weight: bold;
+		}
+		p:nth-child(2) {
+			-webkit-user-select: none; /* Safari 3.1+ */
+		    -moz-user-select: none; /* Firefox 2+ */
+		    -ms-user-select: none; /* IE 10+ */
+		    user-select: none; /* Standard syntax */
+		}
+
+		.camera {
+			width:500px;
+			height:500px;
+			perspective:center center;
+			perspective:500px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			-webkit-user-select: none; /* Safari 3.1+ */
+		    -moz-user-select: none; /* Firefox 2+ */
+		    -ms-user-select: none; /* IE 10+ */
+		    user-select: none; /* Standard syntax */
+		}
+		.box {
+			background: #ff8000;
+			width:300px;
+			height:300px;
+			animation-duration: 3s;
+  			animation-name: aaa;
+  			animation-iteration-count: infinite;
+  			animation-direction: alternate;
+  			backface-visibility: visible;
+  			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: wait;
+		}
+		@keyframes aaa {
+		  0% {
+		    transform: translateY(0) rotateY(0);
+		    border-radius: 50%;
+		  }
+		  50% {
+		    transform: translateY(50px) rotateY(60deg);
+		    background-color: red;
+		    border-radius: 0;
+		  }
+		  75% {
+		    transform: translateY(-20px) rotateY(120deg);
+		    background-color: yellow;
+		    border-radius: 10%;
+		    color:#666;
+		  }
+		  100% {
+		    transform: translateY(100px) translateX(-50px) rotateY(180deg);
+		    background-color: blue;
+		    border-radius: 50%;
+		    color:#fff;
+		  }
+		}
+		.active {
+			animation-play-state:paused;
+		}
+    </style>
+</head>
+<body>
+	<div id="contain">
+		<div id="wrap">
+			<h2 style="font-size: 60px;">animation</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quaerat tempora enim eum suscipit laborum, corporis reprehenderit deleniti soluta ea asperiores. Iure reprehenderit, repudiandae! Commodi saepe cum doloremque deserunt nemo! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum voluptatem adipisci eos culpa, consequuntur laborum quisquam ipsum dolores magnam veniam.</p>
+		</div>
+		
+		<div class="camera">
+			<div class="box">
+				<p>hello world！</p>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		console.log($('.box').hasClass('active'));
+		$(document).ready(function(e){
+			$('.box').click(function (e) {  
+				if($('.box').hasClass('active')) {
+					$('.box').removeClass('active');
+				}else {
+					$('.box').addClass('active');
+				}
+	        });
+		});
+		
+	</script>
+</body>
+</html>
